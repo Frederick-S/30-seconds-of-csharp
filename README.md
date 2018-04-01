@@ -9,10 +9,10 @@
 <details>
 <summary>View contents</summary>
 
-* [`all`](#all)
+* [`All`](#All)
 
 </details>
 
 ## List
-### all
+### All
 Returns `true` if the provided predicate function returns `true` for all elements in a collection, `false` otherwise.
