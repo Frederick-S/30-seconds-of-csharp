@@ -8,9 +8,9 @@ namespace ThirtySecondsOfCSharp.Tests.Lists
         [Fact]
         public void AllNumbersAreEven()
         {
-            List<int> numbers = new List<int> { 2, 4, 6, 8, 10 };
+            var numbers = new List<int> { 2, 4, 6, 8, 10 };
 
-            Assert.True(ThirtySecondsOfCSharp.Lists.All(numbers, (x) => x % 2 == 0));
+            Assert.True(ThirtySecondsOfCSharp.Lists.All(numbers, x => x % 2 == 0));
         }
     }
 }
