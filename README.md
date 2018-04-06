@@ -9,9 +9,9 @@
 <details>
 <summary>View contents</summary>
 
-* [`All`](#All)
-* [`Any`](#Any)
-* [`Bifurcate`](#Bifurcate)
+* [`All`](#all)
+* [`Any`](#any)
+* [`Bifurcate`](#bifurcate)
 
 </details>
 
