@@ -10,6 +10,7 @@
 <summary>View contents</summary>
 
 * [`All`](#All)
+* [`Any`](#Any)
 
 </details>
 
@@ -17,11 +18,23 @@
 ### All
 Returns `true` if the provided predicate function returns `true` for all elements in a collection, `false` otherwise.
 
-Use `List<T>.TrueForAll(Predicate<T>)` to test if all elements in the collection return true based on `Predicate<T>`.
+Use `List<T>.TrueForAll(Predicate<T>)` to test if all elements in the collection return `true` based on `Predicate<T>`.
 
 ```cs
 public static bool All<T>(List<T> list, Predicate<T> predict)
 {
     return list.TrueForAll(predict);
+}
+```
+
+### Any
+Returns `true` if the provided predicate function returns `true` for at least one element in a collection, `false` otherwise.
+
+Use `List<T>.Exists(Predicate<T>)` to test if any elements in the collection return `true` based on `Predicate<T>`.
+
+```cs
+public static bool Any<T>(List<T> list, Predicate<T> predicate)
+{
+    return list.Exists(predicate);
 }
 ```
