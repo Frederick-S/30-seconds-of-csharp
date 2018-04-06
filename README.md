@@ -43,7 +43,7 @@ public static bool Any<T>(List<T> list, Predicate<T> predicate)
 ### Bifurcate
 Splits values into two groups. If an element in `Predicate<T>` is truthy, the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
 
-Use `Aggregate<TSource,TAccumulate>(IEnumerable<TSource>, TAccumulate, Func<TAccumulate,TSource,TAccumulate>)` and `List<T>.Add(T)` to add elements to groups, based on `Predicate<T>`.
+Use `Enumerable.Aggregate<TSource,TAccumulate>(IEnumerable<TSource>, TAccumulate, Func<TAccumulate,TSource,TAccumulate>)` and `List<T>.Add(T)` to add elements to groups, based on `Predicate<T>`.
 
 ```cs
 public static List<List<T>> Bifurcate<T>(List<T> list, Predicate<T> predicate)
