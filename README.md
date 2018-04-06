@@ -11,6 +11,7 @@
 
 * [`All`](#All)
 * [`Any`](#Any)
+* [`Bifurcate`](#Bifurcate)
 
 </details>
 
@@ -36,5 +37,25 @@ Use `List<T>.Exists(Predicate<T>)` to test if any elements in the collection ret
 public static bool Any<T>(List<T> list, Predicate<T> predicate)
 {
     return list.Exists(predicate);
+}
+```
+
+### Bifurcate
+Splits values into two groups. If an element in `Predicate<T>` is truthy, the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
+
+Use `Aggregate<TSource,TAccumulate>(IEnumerable<TSource>, TAccumulate, Func<TAccumulate,TSource,TAccumulate>)` and `List<T>.Add(T)` to add elements to groups, based on `Predicate<T>`.
+
+```cs
+public static List<List<T>> Bifurcate<T>(List<T> list, Predicate<T> predicate)
+{
+    return list.Aggregate(new List<List<T>> { new List<T>(), new List<T>() }, (accumulator, current) =>
+    {
+        var index = predicate.Invoke(current) ? 0 : 1;
+
+        accumulator[index].Add(current);
+
+        return accumulator;
+    })
+    .ToList();
 }
 ```
