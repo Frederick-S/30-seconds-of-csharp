@@ -16,7 +16,7 @@ namespace ThirtySecondsOfCSharp
             return list.Exists(predicate);
         }
 
-        public static List<List<T>> Bifurcate<T>(List<T> list, Predicate<T> predicate)
+        public static List<List<T>> BifurcateBy<T>(List<T> list, Predicate<T> predicate)
         {
             return list.Aggregate(new List<List<T>> { new List<T>(), new List<T>() }, (accumulator, current) =>
             {
