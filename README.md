@@ -29,6 +29,17 @@ public static bool All<T>(List<T> list, Predicate<T> predict)
 }
 ```
 
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 2, 4, 6, 8, 10 };
+
+All(numbers, x => x % 2 == 0); // true
+```
+
+</details>
+
 ### Any
 Returns `true` if the provided predicate function returns `true` for at least one element in a collection, `false` otherwise.
 
@@ -40,6 +51,17 @@ public static bool Any<T>(List<T> list, Predicate<T> predicate)
     return list.Exists(predicate);
 }
 ```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 30 };
+
+Any(numbers, x => x > 10); // true
+```
+
+</details>
 
 ### Bifurcate
 Splits values into two groups. If an element in `filter` is truthy, the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
@@ -62,6 +84,18 @@ public static List<List<T>> Bifurcate<T>(List<T> list, List<bool> filter)
 }
 ```
 
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
+var filter = new List<bool> { true, true, true, false, false, false };
+
+Bifurcate(numbers, filter); // { { 1, 2, 3 }, { 4, 5, 6 } }
+```
+
+</details>
+
 ### BifurcateBy
 Splits values into two groups according to a predicate function, which specifies which group an element in the input collection belongs to. If the predicate function returns a truthy value, the collection element belongs to the first group; otherwise, it belongs to the second group.
 
@@ -81,3 +115,14 @@ public static List<List<T>> BifurcateBy<T>(List<T> list, Predicate<T> predicate)
     .ToList();
 }
 ```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
+
+BifurcateBy(numbers, x => x % 2 == 0); // { { 2, 4, 6 }, { 1, 3, 5 } }
+```
+
+</details>
