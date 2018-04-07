@@ -23,7 +23,7 @@ namespace ThirtySecondsOfCSharp
                 {
                     var index = filter[i] ? 0 : 1;
 
-                    accumulator[index].Add(list[index]);
+                    accumulator[index].Add(list[i]);
 
                     return accumulator;
                 })
