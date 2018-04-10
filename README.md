@@ -13,6 +13,7 @@
 * [`Any`](#any)
 * [`Bifurcate`](#bifurcate)
 * [`BifurcateBy`](#bifurcateby)
+* [`Chunk`](#chunk)
 
 </details>
 
@@ -123,6 +124,37 @@ public static List<List<T>> BifurcateBy<T>(List<T> list, Predicate<T> predicate)
 var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
 
 BifurcateBy(numbers, x => x % 2 == 0); // { { 2, 4, 6 }, { 1, 3, 5 } }
+```
+
+</details>
+
+### Chunk
+Chunks an list into smaller lists of a specified size.
+
+Use `List<T>.GetRange(Int32, Int32)` to map each element of the new list to a chunk the length of `size`. If the original list can't be split evenly, the final chunk will contain the remaining elements.
+
+```cs
+public static List<List<T>> Chunk<T>(List<T> list, int size)
+{
+    return Enumerable.Range(0, (int)Math.Ceiling(list.Count / (double)size))
+        .Select(i =>
+        {
+            var index = i * size;
+            var count = index + size > list.Count ? list.Count - index : size;
+
+            return list.GetRange(index, count);
+        })
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3, 4, 5 };
+
+Chunk(numbers, 2); // { { 1, 2 }, { 3, 4 }, { 5 } }
 ```
 
 </details>
