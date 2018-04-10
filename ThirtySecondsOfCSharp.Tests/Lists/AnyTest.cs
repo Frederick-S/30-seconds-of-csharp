@@ -6,7 +6,7 @@ namespace ThirtySecondsOfCSharp.Tests.Lists
     public class AnyTest
     {
         [Fact]
-        public void ShouldFindANumberGreaterThan10()
+        public void ShouldFindANumberGreaterThanTen()
         {
             var numbers = new List<int> { 1, 2, 30 };
 
