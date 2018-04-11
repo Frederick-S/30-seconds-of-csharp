@@ -55,5 +55,10 @@ namespace ThirtySecondsOfCSharp
                 })
                 .ToList();
         }
+
+        public static List<T> Compact<T>(List<T> list)
+        {
+            return list.FindAll(x => x != null).ToList();
+        }
     }
 }
