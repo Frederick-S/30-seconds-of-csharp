@@ -14,6 +14,7 @@
 * [`Bifurcate`](#bifurcate)
 * [`BifurcateBy`](#bifurcateby)
 * [`Chunk`](#chunk)
+* [`Compact`](#compact)
 
 </details>
 
@@ -155,6 +156,29 @@ public static List<List<T>> Chunk<T>(List<T> list, int size)
 var numbers = new List<int> { 1, 2, 3, 4, 5 };
 
 Chunk(numbers, 2); // { { 1, 2 }, { 3, 4 }, { 5 } }
+```
+
+</details>
+
+### Compact
+Removes null values from a list.
+
+Use `List<T>.FindAll(Predicate<T>)` to filter out null values.
+
+```cs
+public static List<T> Compact<T>(List<T> list)
+{
+    return list.FindAll(x => x != null).ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var list = new List<string> { "a", null, "c", null };
+
+Compact(list); // { "a", "c" }
 ```
 
 </details>
