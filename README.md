@@ -15,6 +15,7 @@
 * [`BifurcateBy`](#bifurcateby)
 * [`Chunk`](#chunk)
 * [`Compact`](#compact)
+* [`CountBy`](#countBy)
 
 </details>
 
@@ -179,6 +180,30 @@ public static List<T> Compact<T>(List<T> list)
 var list = new List<string> { "a", null, "c", null };
 
 Compact(list); // { "a", "c" }
+```
+
+</details>
+
+### CountBy
+Groups the elements of a list based on the given function and returns the count of elements in each group.
+
+Use `Enumerable.GroupBy<TSource, TKey>(IEnumerable<TSource>, Func<TSource, TKey>)` to group the elements of the list according to the specified key selector function `Func<TSource, TKey>`. Use `Enumerable.ToDictionary<TSource, TKey, TElement> Method (IEnumerable<TSource>, Func<TSource, TKey>, Func<TSource, TElement>)` to create a dictionary, where the keys are produced from the mapped results.
+
+```cs
+public static Dictionary<TResult, int> CountBy<T, TResult>(List<T> list, Func<T, TResult> keySelector)
+{
+    return list.GroupBy(keySelector)
+        .ToDictionary(group => group.Key, group => group.Count());
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var strings = new List<string> { "one", "two", "three" };
+
+CountBy(strings, x => x.Length); // { 3: 2, 5: 1 }
 ```
 
 </details>
