@@ -11,7 +11,7 @@ namespace ThirtySecondsOfCSharp.Tests.Lists
             var list = new List<string> { "a", null, "c", null };
             var expectedList = new List<string> { "a", "c" };
 
-            Assert.Equal(expectedList, ThirtySecondsOfCSharp.Lists.Compact(list));
+            Assert.Equal(expectedList, ThirtySecondsOfCSharp.Lists.Lists.Compact(list));
         }
     }
 }

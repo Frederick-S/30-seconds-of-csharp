@@ -10,7 +10,7 @@ namespace ThirtySecondsOfCSharp.Tests.Lists
         {
             var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
             var filter = new List<bool> { true, true, true, false, false, false };
-            var groups = ThirtySecondsOfCSharp.Lists.Bifurcate(numbers, filter);
+            var groups = ThirtySecondsOfCSharp.Lists.Lists.Bifurcate(numbers, filter);
 
             Assert.Equal(new List<int> { 1, 2, 3 }, groups[0]);
             Assert.Equal(new List<int> { 4, 5, 6 }, groups[1]);

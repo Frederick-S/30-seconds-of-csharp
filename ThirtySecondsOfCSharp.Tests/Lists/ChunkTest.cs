@@ -16,7 +16,7 @@ namespace ThirtySecondsOfCSharp.Tests.Lists
                 new List<int> { 5 },
             };
 
-            Assert.Equal(expectedList, ThirtySecondsOfCSharp.Lists.Chunk(numbers, 2));
+            Assert.Equal(expectedList, ThirtySecondsOfCSharp.Lists.Lists.Chunk(numbers, 2));
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace ThirtySecondsOfCSharp.Tests.Lists
                 new List<int> { 6, 7, 8, 9, 10 },
             };
 
-            Assert.Equal(expectedList, ThirtySecondsOfCSharp.Lists.Chunk(numbers, 5));
+            Assert.Equal(expectedList, ThirtySecondsOfCSharp.Lists.Lists.Chunk(numbers, 5));
         }
     }
 }

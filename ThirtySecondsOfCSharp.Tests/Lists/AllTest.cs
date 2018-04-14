@@ -10,7 +10,7 @@ namespace ThirtySecondsOfCSharp.Tests.Lists
         {
             var numbers = new List<int> { 2, 4, 6, 8, 10 };
 
-            Assert.True(ThirtySecondsOfCSharp.Lists.All(numbers, x => x % 2 == 0));
+            Assert.True(ThirtySecondsOfCSharp.Lists.Lists.All(numbers, x => x % 2 == 0));
         }
     }
 }
