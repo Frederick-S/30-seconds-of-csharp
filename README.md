@@ -15,7 +15,7 @@
 * [`BifurcateBy`](#bifurcateby)
 * [`Chunk`](#chunk)
 * [`Compact`](#compact)
-* [`CountBy`](#countBy)
+* [`CountBy`](#countby)
 
 </details>
 
