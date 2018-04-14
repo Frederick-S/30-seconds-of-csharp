@@ -187,7 +187,7 @@ Compact(list); // { "a", "c" }
 ### CountBy
 Groups the elements of a list based on the given function and returns the count of elements in each group.
 
-Use `Enumerable.GroupBy<TSource, TKey>(IEnumerable<TSource>, Func<TSource, TKey>)` to group the elements of the list according to the specified key selector function `Func<TSource, TKey>`. Use `Enumerable.ToDictionary<TSource, TKey, TElement> Method (IEnumerable<TSource>, Func<TSource, TKey>, Func<TSource, TElement>)` to create a dictionary, where the keys are produced from the mapped results.
+Use `Enumerable.GroupBy<TSource, TKey>(IEnumerable<TSource>, Func<TSource, TKey>)` to group the elements of the list according to the specified key selector function `Func<TSource, TKey>`. Use `Enumerable.ToDictionary<TSource, TKey, TElement>(IEnumerable<TSource>, Func<TSource, TKey>, Func<TSource, TElement>)` to create a dictionary, where the keys are produced from the mapped results.
 
 ```cs
 public static Dictionary<TResult, int> CountBy<T, TResult>(List<T> list, Func<T, TResult> keySelector)
