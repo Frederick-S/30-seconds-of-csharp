@@ -17,6 +17,7 @@
 * [`Compact`](#compact)
 * [`CountBy`](#countby)
 * [`CountOccurrences`](#countoccurrences)
+* [`DeepFlatten`](#deepflatten)
 
 </details>
 
@@ -229,6 +230,50 @@ public static int CountOccurrences<T>(List<T> list, T value)
 var numbers = new List<int> { 1, 1, 2, 1, 2, 3 };
 
 CountOccurrences(numbers, 1); // 3
+```
+
+</details>
+
+### DeepFlatten
+Deep flattens a list.
+
+Use recursion. Use `Enumerable.SelectMany<TSource, TResult>(IEnumerable<TSource>, Func<TSource, IEnumerable<TResult>>)` to flatten a list. Recursively flatten each element that is a list.
+
+```cs
+public static List<object> DeepFlatten(List<object> list)
+{
+    return list.SelectMany(x =>
+    {
+        if (x is IList)
+        {
+            return DeepFlatten((x as IList).Cast<object>().ToList());
+        }
+        else
+        {
+            return new List<object> { x };
+        }
+    })
+    .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<object>
+{
+    1,
+    new List<int> { 2 },
+    new List<object>
+    {
+        new List<int> { 3 },
+        4,
+    },
+    5,
+};
+
+DeepFlatten(numbers); // { 1, 2, 3, 4, 5 }
 ```
 
 </details>
