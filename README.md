@@ -169,6 +169,7 @@ Use `List<T>.FindAll(Predicate<T>)` to filter out null values.
 
 ```cs
 public static List<T> Compact<T>(List<T> list)
+    where T : class
 {
     return list.FindAll(x => x != null).ToList();
 }
