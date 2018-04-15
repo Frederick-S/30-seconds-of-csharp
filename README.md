@@ -16,7 +16,7 @@
 * [`Chunk`](#chunk)
 * [`Compact`](#compact)
 * [`CountBy`](#countby)
-* [`CountOccurrences`](#countcccurrences)
+* [`CountOccurrences`](#countoccurrences)
 
 </details>
 
