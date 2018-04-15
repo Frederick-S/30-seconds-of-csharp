@@ -16,6 +16,7 @@
 * [`Chunk`](#chunk)
 * [`Compact`](#compact)
 * [`CountBy`](#countby)
+* [`CountOccurrences`](#countcccurrences)
 
 </details>
 
@@ -204,6 +205,29 @@ public static Dictionary<TResult, int> CountBy<T, TResult>(List<T> list, Func<T,
 var strings = new List<string> { "one", "two", "three" };
 
 CountBy(strings, x => x.Length); // { 3: 2, 5: 1 }
+```
+
+</details>
+
+### CountOccurrences
+Counts the occurrences of a value in a list.
+
+Use `Enumerable.Aggregate<TSource, TAccumulate>(IEnumerable<TSource>, TAccumulate, Func<TAccumulate, TSource, TAccumulate>)` to increment a counter each time you encounter the specific value inside the list.
+
+```cs
+public static int CountOccurrences<T>(List<T> list, T value)
+{
+    return list.Aggregate(0, (accumulator, current) => value.Equals(current) ? accumulator + 1 : accumulator);
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 1, 2, 1, 2, 3 };
+
+CountOccurrences(numbers, 1); // 3
 ```
 
 </details>
