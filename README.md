@@ -18,6 +18,7 @@
 * [`CountBy`](#countby)
 * [`CountOccurrences`](#countoccurrences)
 * [`DeepFlatten`](#deepflatten)
+* [`Difference`](#difference)
 
 </details>
 
@@ -274,6 +275,32 @@ var numbers = new List<object>
 };
 
 DeepFlatten(numbers); // { 1, 2, 3, 4, 5 }
+```
+
+</details>
+
+### Difference
+Returns the difference between two lists.
+
+Create a `HashSet<T>` from `b`, then use `List<T>.FindAll(Predicate<T>)` on `a` to only keep values not contained in `b`.
+
+```cs
+public static List<T> Difference<T>(List<T> a, List<T> b)
+{
+    var hashSet = new HashSet<T>(b);
+
+    return a.FindAll(x => !hashSet.Contains(x));
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var a = new List<int> { 1, 2, 3 };
+var b = new List<int> { 1, 2, 4 };
+
+Difference(a, b); // { 3 }
 ```
 
 </details>
