@@ -20,6 +20,7 @@
 * [`DeepFlatten`](#deepflatten)
 * [`Difference`](#difference)
 * [`DifferenceBy`](#differenceby)
+* [`DifferenceWith`](#differencewith)
 
 </details>
 
@@ -328,6 +329,30 @@ var a = new List<double> { 2.1, 1.2 };
 var b = new List<double> { 2.3, 3.4 };
 
 DifferenceBy(a, b, Math.Floor); // { 1.2 }
+```
+
+</details>
+
+### DifferenceWith
+Filters out all values from a list for which the comparator function does not return `true`.
+
+Use `List<T>.FindAll(Predicate<T>)` and `List<T>.FindIndex(Predicate<T>)` to find the appropriate values.
+
+```cs
+public static List<T> DifferenceWith<T>(List<T> a, List<T> b, Func<T, T, bool> comparator)
+{
+    return a.FindAll(x => b.FindIndex(y => comparator(x, y)) == -1);
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var a = new List<double> { 1, 1.2, 1.5, 3, 0 };
+var b = new List<double> { 1.9, 3, 0 };
+
+DifferenceWith(a, b, (x, y) => Math.Round(x) == Math.Round(y)); // { 1, 1.2 }
 ```
 
 </details>
