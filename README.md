@@ -19,6 +19,7 @@
 * [`CountOccurrences`](#countoccurrences)
 * [`DeepFlatten`](#deepflatten)
 * [`Difference`](#difference)
+* [`DifferenceBy`](#differenceby)
 
 </details>
 
@@ -301,6 +302,32 @@ var a = new List<int> { 1, 2, 3 };
 var b = new List<int> { 1, 2, 4 };
 
 Difference(a, b); // { 3 }
+```
+
+</details>
+
+### DifferenceBy
+Returns the difference between two lists, after applying the provided function to each list element of both.
+
+Create a `HashSet<T>` by applying `selector` to each element in `b`, then use `List<T>.FindAll(Predicate<T>)` in combination with `selector` on `a` to only keep values not contained in the previously created `HashSet<T>`.
+
+```cs
+public static List<T> DifferenceBy<T>(List<T> a, List<T> b, Func<T, T> selector)
+{
+    var hashSet = new HashSet<T>(b.Select(selector));
+
+    return a.FindAll(x => !hashSet.Contains(selector(x)));
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var a = new List<double> { 2.1, 1.2 };
+var b = new List<double> { 2.3, 3.4 };
+
+DifferenceBy(a, b, Math.Floor); // { 1.2 }
 ```
 
 </details>
