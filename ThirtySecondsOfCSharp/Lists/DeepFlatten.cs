@@ -8,17 +8,9 @@ namespace ThirtySecondsOfCSharp.Lists
     {
         public static List<object> DeepFlatten(List<object> list)
         {
-            return list.SelectMany(x =>
-            {
-                if (x is IList)
-                {
-                    return DeepFlatten((x as IList).Cast<object>().ToList());
-                }
-                else
-                {
-                    return new List<object> { x };
-                }
-            })
+            return list.SelectMany(x => x is IList ?
+                    DeepFlatten(((IList)x).Cast<object>().ToList()) :
+                    new List<object> { x })
             .ToList();
         }
     }
