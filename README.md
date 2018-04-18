@@ -21,6 +21,7 @@
 * [`Difference`](#difference)
 * [`DifferenceBy`](#differenceby)
 * [`DifferenceWith`](#differencewith)
+* [`Drop`](#drop)
 
 </details>
 
@@ -353,6 +354,29 @@ var a = new List<double> { 1, 1.2, 1.5, 3, 0 };
 var b = new List<double> { 1.9, 3, 0 };
 
 DifferenceWith(a, b, (x, y) => Math.Round(x) == Math.Round(y)); // { 1, 1.2 }
+```
+
+</details>
+
+### Drop
+Returns a new list with `n` elements removed from the left.
+
+Use `Enumerable.Skip(IEnumerable<TSource>, Int32)` to remove the specified number of elements from the left.
+
+```cs
+public static List<T> Drop<T>(List<T> list, int n)
+{
+    return list.Skip(n).ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3 };
+
+(numbers, 2); // { 3 }
 ```
 
 </details>
