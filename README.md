@@ -22,6 +22,7 @@
 * [`DifferenceBy`](#differenceby)
 * [`DifferenceWith`](#differencewith)
 * [`Drop`](#drop)
+* [`DropRight`](#dropright)
 
 </details>
 
@@ -376,7 +377,30 @@ public static List<T> Drop<T>(List<T> list, int n)
 ```cs
 var numbers = new List<int> { 1, 2, 3 };
 
-(numbers, 2); // { 3 }
+Drop(numbers, 2); // { 3 }
+```
+
+</details>
+
+### DropRight
+Returns a new list with `n` elements removed from the right.
+
+Use `Enumerable.Take(IEnumerable<TSource>, Int32)`to remove the specified number of elements from the right.
+
+```cs
+public static List<T> DropRight<T>(List<T> list, int n)
+{
+    return list.Take(list.Count - n).ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3 };
+
+DropRight(numbers, 2); // { 1 }
 ```
 
 </details>
