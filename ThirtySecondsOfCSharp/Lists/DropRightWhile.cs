@@ -8,11 +8,10 @@ namespace ThirtySecondsOfCSharp.Lists
     {
         public static List<T> DropRightWhile<T>(List<T> list, Predicate<T> predicate)
         {
-            return Enumerable.Range(0, list.Count)
+            return list.AsEnumerable()
                 .Reverse()
-                .SkipWhile(i => !predicate(list[i]))
+                .SkipWhile(x => !predicate(x))
                 .Reverse()
-                .Select(i => list[i])
                 .ToList();
         }
     }
