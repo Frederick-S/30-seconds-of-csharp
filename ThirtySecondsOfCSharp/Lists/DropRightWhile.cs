@@ -11,6 +11,7 @@ namespace ThirtySecondsOfCSharp.Lists
             return Enumerable.Range(0, list.Count)
                 .Reverse()
                 .SkipWhile(i => !predicate(list[i]))
+                .Reverse()
                 .Select(i => list[i])
                 .ToList();
         }
