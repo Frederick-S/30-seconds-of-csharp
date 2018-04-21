@@ -409,7 +409,7 @@ DropRight(numbers, 2); // { 1 }
 ### DropRightWhile
 Removes elements from the end of a list until the passed function returns true. Returns the remaining elements in the list.
 
-Reverse the list, using `Enumerable.SkipWhile<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` to skip the elements of the list until the returned value from the function is true. Reverse and returns the remaining elements.
+Reverse the list, using `Enumerable.SkipWhile<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` to skip the elements of the list until the returned value from the function is `true`. Reverse and returns the remaining elements.
 
 ```cs
 public static List<T> DropRightWhile<T>(List<T> list, Predicate<T> predicate)
