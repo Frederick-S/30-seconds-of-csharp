@@ -24,6 +24,7 @@
 * [`Drop`](#drop)
 * [`DropRight`](#dropright)
 * [`DropRightWhile`](#droprightwhile)
+* [`DropWhile`](#dropwhile)
 
 </details>
 
@@ -407,7 +408,7 @@ DropRight(numbers, 2); // { 1 }
 </details>
 
 ### DropRightWhile
-Removes elements from the end of a list until the passed function returns true. Returns the remaining elements in the list.
+Removes elements from the end of a list until the passed function returns `true`. Returns the remaining elements in the list.
 
 Reverse the list, using `Enumerable.SkipWhile<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` to skip the elements of the list until the returned value from the function is `true`. Reverse and returns the remaining elements.
 
@@ -429,6 +430,30 @@ public static List<T> DropRightWhile<T>(List<T> list, Predicate<T> predicate)
 var numbers = new List<int> { 1, 2, 3, 4 };
 
 DropRightWhile(numbers, x => x < 3); // { 1, 2 }
+```
+
+</details>
+
+### DropWhile
+Removes elements in a list until the passed function returns `true`. Returns the remaining elements in the list.
+
+Using `Enumerable.SkipWhile<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` to skip the elements of the list until the returned value from the function is `true`. Returns the remaining elements.
+
+```cs
+public static List<T> DropWhile<T>(List<T> list, Predicate<T> predicate)
+{
+    return list.SkipWhile(x => !predicate(x))
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3, 4 };
+
+DropWhile(numbers, x => x >= 3)); // { 3, 4 }
 ```
 
 </details>
