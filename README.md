@@ -462,14 +462,12 @@ DropWhile(numbers, x => x >= 3)); // { 3, 4 }
 ### EveryNth
 Returns every nth element in a list.
 
-Use `Enumerable.Range(Int32, Int32)` and `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` to create a new list that contains every nth element of a given list.
+Use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Int32, Boolean>)` to create a new list that contains every nth element of a given list.
 
 ```cs
 public static List<T> EveryNth<T>(List<T> list, int nth)
 {
-    return Enumerable.Range(0, list.Count)
-        .Where(i => i % nth == nth - 1)
-        .Select(i => list[i])
+    return list.Where((x, i) => i % nth == nth - 1)
         .ToList();
 }
 ```
