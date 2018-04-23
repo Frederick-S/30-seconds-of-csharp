@@ -7,9 +7,7 @@ namespace ThirtySecondsOfCSharp.Lists
     {
         public static List<T> EveryNth<T>(List<T> list, int nth)
         {
-            return Enumerable.Range(0, list.Count)
-                .Where(i => i % nth == nth - 1)
-                .Select(i => list[i])
+            return list.Where((x, i) => i % nth == nth - 1)
                 .ToList();
         }
     }
