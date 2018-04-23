@@ -25,6 +25,7 @@
 * [`DropRight`](#dropright)
 * [`DropRightWhile`](#droprightwhile)
 * [`DropWhile`](#dropwhile)
+* [`EveryNth`](#everynth)
 
 </details>
 
@@ -454,6 +455,30 @@ public static List<T> DropWhile<T>(List<T> list, Predicate<T> predicate)
 var numbers = new List<int> { 1, 2, 3, 4 };
 
 DropWhile(numbers, x => x >= 3)); // { 3, 4 }
+```
+
+</details>
+
+### EveryNth
+Returns every nth element in a list.
+
+Use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Int32, Boolean>)` to create a new list that contains every nth element of a given list.
+
+```cs
+public static List<T> EveryNth<T>(List<T> list, int nth)
+{
+    return list.Where((x, i) => i % nth == nth - 1)
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
+
+EveryNth(numbers, 2); // { 2, 4, 6 }
 ```
 
 </details>
