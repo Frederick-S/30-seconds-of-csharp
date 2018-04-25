@@ -26,6 +26,7 @@
 * [`DropRightWhile`](#droprightwhile)
 * [`DropWhile`](#dropwhile)
 * [`EveryNth`](#everynth)
+* [`FilterNonUnique`](#filternonunique)
 
 </details>
 
@@ -479,6 +480,30 @@ public static List<T> EveryNth<T>(List<T> list, int nth)
 var numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
 
 EveryNth(numbers, 2); // { 2, 4, 6 }
+```
+
+</details>
+
+### FilterNonUnique
+Filters out the non-unique values in a list.
+
+Use `List<T>.FindAll(Predicate<T>)` for a list containing only the unique values.
+
+```cs
+public static List<T> FilterNonUnique<T>(List<T> list)
+{
+    return list.FindAll(x => list.IndexOf(x) == list.LastIndexOf(x))
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 2, 3, 4, 4, 5 };
+
+FilterNonUnique(numbers); // { 1, 3, 5 }
 ```
 
 </details>
