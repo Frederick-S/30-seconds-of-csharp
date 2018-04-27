@@ -27,6 +27,7 @@
 * [`DropWhile`](#dropwhile)
 * [`EveryNth`](#everynth)
 * [`FilterNonUnique`](#filternonunique)
+* [`FindLast`](#findlast)
 
 </details>
 
@@ -504,6 +505,29 @@ public static List<T> FilterNonUnique<T>(List<T> list)
 var numbers = new List<int> { 1, 2, 2, 3, 4, 4, 5 };
 
 FilterNonUnique(numbers); // { 1, 3, 5 }
+```
+
+</details>
+
+### FindLast
+Returns the last element for which the provided function returns a truthy value.
+
+Use `List<T>.FindLast(Predicate<T>)` to get the last one.
+
+```cs
+public static T FindLast<T>(List<T> list, Predicate<T> predicate)
+{
+    return list.FindLast(predicate);
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3, 4 };
+
+FindLast(numbers, x => x % 2 == 1)); // 3
 ```
 
 </details>
