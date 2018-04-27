@@ -56,6 +56,8 @@ All(numbers, x => x % 2 == 0); // true
 
 </details>
 
+[⬆ Back to top](#table-of-contents)
+
 ### Any
 Returns `true` if the provided predicate function returns `true` for at least one element in a collection, `false` otherwise.
 
