@@ -28,6 +28,7 @@
 * [`EveryNth`](#everynth)
 * [`FilterNonUnique`](#filternonunique)
 * [`FindLast`](#findlast)
+* [`FindLastIndex`](#findlastindex)
 
 </details>
 
@@ -528,6 +529,29 @@ public static T FindLast<T>(List<T> list, Predicate<T> predicate)
 var numbers = new List<int> { 1, 2, 3, 4 };
 
 FindLast(numbers, x => x % 2 == 1)); // 3
+```
+
+</details>
+
+### FindLastIndex
+Returns the index of the last element for which the provided function returns a truthy value.
+
+Use `List<T>.FindLastIndex(Predicate<T>)` to get the last one.
+
+```cs
+public static int FindLastIndex<T>(List<T> list, Predicate<T> predicate)
+{
+    return list.FindLastIndex(predicate);
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3, 4 };
+
+FindLastIndex(numbers, x => x % 2 == 1)); // 2
 ```
 
 </details>
