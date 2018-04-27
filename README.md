@@ -56,6 +56,8 @@ All(numbers, x => x % 2 == 0); // true
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### Any
 Returns `true` if the provided predicate function returns `true` for at least one element in a collection, `false` otherwise.
 
@@ -78,6 +80,8 @@ Any(numbers, x => x > 10); // true
 ```
 
 </details>
+
+<br>[⬆ Back to top](#table-of-contents)
 
 ### Bifurcate
 Splits values into two groups. If an element in `filter` is truthy, the corresponding element in the collection belongs to the first group; otherwise, it belongs to the second group.
@@ -112,6 +116,8 @@ Bifurcate(numbers, filter); // { { 1, 2, 3 }, { 4, 5, 6 } }
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### BifurcateBy
 Splits values into two groups according to a predicate function, which specifies which group an element in the input collection belongs to. If the predicate function returns a truthy value, the collection element belongs to the first group; otherwise, it belongs to the second group.
 
@@ -142,6 +148,8 @@ BifurcateBy(numbers, x => x % 2 == 0); // { { 2, 4, 6 }, { 1, 3, 5 } }
 ```
 
 </details>
+
+<br>[⬆ Back to top](#table-of-contents)
 
 ### Chunk
 Chunks an list into smaller lists of a specified size.
@@ -174,6 +182,8 @@ Chunk(numbers, 2); // { { 1, 2 }, { 3, 4 }, { 5 } }
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### Compact
 Removes null values from a list.
 
@@ -197,6 +207,8 @@ Compact(list); // { "a", "c" }
 ```
 
 </details>
+
+<br>[⬆ Back to top](#table-of-contents)
 
 ### CountBy
 Groups the elements of a list based on the given function and returns the count of elements in each group.
@@ -222,6 +234,8 @@ CountBy(strings, x => x.Length); // { 3: 2, 5: 1 }
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### CountOccurrences
 Counts the occurrences of a value in a list.
 
@@ -244,6 +258,8 @@ CountOccurrences(numbers, 1); // 3
 ```
 
 </details>
+
+<br>[⬆ Back to top](#table-of-contents)
 
 ### DeepFlatten
 Deep flattens a list.
@@ -289,6 +305,8 @@ DeepFlatten(numbers); // { 1, 2, 3, 4, 5 }
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### Difference
 Returns the difference between two lists.
 
@@ -314,6 +332,8 @@ Difference(a, b); // { 3 }
 ```
 
 </details>
+
+<br>[⬆ Back to top](#table-of-contents)
 
 ### DifferenceBy
 Returns the difference between two lists, after applying the provided function to each list element of both.
@@ -341,6 +361,8 @@ DifferenceBy(a, b, Math.Floor); // { 1.2 }
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### DifferenceWith
 Filters out all values from a list for which the comparator function does not return `true`.
 
@@ -365,6 +387,8 @@ DifferenceWith(a, b, (x, y) => Math.Round(x) == Math.Round(y)); // { 1, 1.2 }
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### Drop
 Returns a new list with `n` elements removed from the left.
 
@@ -388,6 +412,8 @@ Drop(numbers, 2); // { 3 }
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### DropRight
 Returns a new list with `n` elements removed from the right.
 
@@ -410,6 +436,8 @@ DropRight(numbers, 2); // { 1 }
 ```
 
 </details>
+
+<br>[⬆ Back to top](#table-of-contents)
 
 ### DropRightWhile
 Removes elements from the end of a list until the passed function returns `true`. Returns the remaining elements in the list.
@@ -438,6 +466,8 @@ DropRightWhile(numbers, x => x < 3); // { 1, 2 }
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### DropWhile
 Removes elements in a list until the passed function returns `true`. Returns the remaining elements in the list.
 
@@ -461,6 +491,8 @@ DropWhile(numbers, x => x >= 3)); // { 3, 4 }
 ```
 
 </details>
+
+<br>[⬆ Back to top](#table-of-contents)
 
 ### EveryNth
 Returns every nth element in a list.
@@ -486,6 +518,8 @@ EveryNth(numbers, 2); // { 2, 4, 6 }
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### FilterNonUnique
 Filters out the non-unique values in a list.
 
@@ -510,6 +544,8 @@ FilterNonUnique(numbers); // { 1, 3, 5 }
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### FindLast
 Returns the last element for which the provided function returns a truthy value.
 
@@ -533,6 +569,8 @@ FindLast(numbers, x => x % 2 == 1)); // 3
 
 </details>
 
+<br>[⬆ Back to top](#table-of-contents)
+
 ### FindLastIndex
 Returns the index of the last element for which the provided function returns a truthy value.
 
@@ -555,3 +593,5 @@ FindLastIndex(numbers, x => x % 2 == 1)); // 2
 ```
 
 </details>
+
+<br>[⬆ Back to top](#table-of-contents)
