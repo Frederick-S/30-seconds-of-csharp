@@ -270,18 +270,8 @@ Use recursion. Use `Enumerable.SelectMany<TSource, TResult>(IEnumerable<TSource>
 ```cs
 public static List<object> DeepFlatten(List<object> list)
 {
-    return list.SelectMany(x =>
-    {
-        if (x is IList)
-        {
-            return DeepFlatten((x as IList).Cast<object>().ToList());
-        }
-        else
-        {
-            return new List<object> { x };
-        }
-    })
-    .ToList();
+    return list.SelectMany(x => x is IList ? DeepFlatten(((IList)x).Cast<object>().ToList()) : new List<object> { x })
+            .ToList();
 }
 ```
 
