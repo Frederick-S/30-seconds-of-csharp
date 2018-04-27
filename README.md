@@ -29,6 +29,7 @@
 * [`FilterNonUnique`](#filternonunique)
 * [`FindLast`](#findlast)
 * [`FindLastIndex`](#findlastindex)
+* [`Flatten`](#flatten)
 
 </details>
 
@@ -590,6 +591,47 @@ public static int FindLastIndex<T>(List<T> list, Predicate<T> predicate)
 var numbers = new List<int> { 1, 2, 3, 4 };
 
 FindLastIndex(numbers, x => x % 2 == 1)); // 2
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Flatten
+Flattens a list up to the specified depth.
+
+Use recursion. Use `Enumerable.SelectMany<TSource, TResult>(IEnumerable<TSource>, Func<TSource, IEnumerable<TResult>>)` to flatten a list. Recursively flatten each element that is a list and check depth.
+
+```cs
+public static List<object> Flatten(List<object> list, int depth = 1)
+{
+    return list.SelectMany(x => x is IList && depth > 0 ? Flatten(((IList)x).Cast<object>().ToList(), depth - 1) : new List<object> { x })
+             .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var list = new List<object>
+{
+    1,
+    new List<object>
+    {
+        2,
+        new List<object>
+        {
+            3,
+            new List<object> { 4, 5 },
+            6,
+        },
+        7,
+    },
+    8,
+};
+
+Flatten(list, 2); // { 1, 2, 3, { 4, 5 }, 6, 7, 8 }
 ```
 
 </details>
