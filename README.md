@@ -31,6 +31,7 @@
 * [`FindLastIndex`](#findlastindex)
 * [`Flatten`](#flatten)
 * [`ForEachRight`](#foreachright)
+* [`GroupBy`](#groupby)
 
 </details>
 
@@ -651,6 +652,32 @@ public static void ForEachRight<T>(List<T> list, Action<T> action)
 var numbers = new List<int> { 1, 2, 3, 4 };
 
 ForEachRight(numbers, x => Console.WriteLine(x)); // 4, 3, 2, 1
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### GroupBy
+Groups the elements of a list based on the given function.
+
+Use `Enumerable.GroupBy<TSource, TKey>(IEnumerable<TSource>, Func<TSource, TKey>)` to group the elements of the list according to the specified key selector function `Func<TSource, TKey>`. Use `Enumerable.ToDictionary<TSource, TKey, TElement>(IEnumerable<TSource>, Func<TSource, TKey>, Func<TSource, TElement>)` to create a dictionary, where the keys are produced from the mapped results.
+
+```cs
+public static Dictionary<TKey, List<T>> GroupBy<T, TKey>(List<T> list, Func<T, TKey> selector)
+{
+    return list.GroupBy(selector)
+        .ToDictionary(x => x.Key, x => x.ToList());
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<double> { 6.1, 4.2, 6.3 };
+
+GroupBy(numbers, Math.Floor); // { 4: { 4.2 }, 6: { 6.1, 6.3 } }
 ```
 
 </details>
