@@ -33,6 +33,7 @@
 * [`ForEachRight`](#foreachright)
 * [`GroupBy`](#groupby)
 * [`Head`](#head)
+* [`IndexOfAll`](#indexofall)
 
 </details>
 
@@ -704,6 +705,33 @@ public static T Head<T>(List<T> list)
 var numbers = new List<int> { 1, 2, 3 };
 
 Head(numbers); // 1
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### IndexOfAll
+Returns all indices of `value` in a list. If `value` never occurs, returns `[]`.
+
+Use `Enumerable.Range(Int32, Int32)` to create an int sequence, use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` to get the matched element.
+
+```cs
+public static List<int> IndexOfAll<T>(List<T> list, T value)
+{
+    return Enumerable.Range(0, list.Count)
+        .Where(i => list[i].Equals(value))
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3, 1, 2, 3 };
+
+IndexOfAll(numbers, 1); // { 0, 3 }
 ```
 
 </details>
