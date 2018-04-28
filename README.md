@@ -34,6 +34,7 @@
 * [`GroupBy`](#groupby)
 * [`Head`](#head)
 * [`IndexOfAll`](#indexofall)
+* [`Initial`](#initial)
 
 </details>
 
@@ -732,6 +733,31 @@ public static List<int> IndexOfAll<T>(List<T> list, T value)
 var numbers = new List<int> { 1, 2, 3, 1, 2, 3 };
 
 IndexOfAll(numbers, 1); // { 0, 3 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Initial
+Returns all the elements of a list except the last one.
+
+Use `List<T>.GetRange(Int32, Int32)` to return all but the last element of the list.
+
+```cs
+public static List<T> Initial<T>(List<T> list)
+{
+    return list.Count > 1 ? list.GetRange(0, list.Count - 1) : new List<T>();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3 };
+
+Initial(numbers); // { 1, 2 }
 ```
 
 </details>
