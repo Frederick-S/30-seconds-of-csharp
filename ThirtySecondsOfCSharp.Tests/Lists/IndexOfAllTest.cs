@@ -13,5 +13,13 @@ namespace ThirtySecondsOfCSharp.Tests.Lists
 
             Assert.Equal(expectedIndices, ThirtySecondsOfCSharp.Lists.Lists.IndexOfAll(numbers, 1));
         }
+
+        [Fact]
+        public void ShouldReturnEmptyList()
+        {
+            var numbers = new List<int> { 1, 2, 3, 1, 2, 3 };
+
+            Assert.Equal(new List<int>(), ThirtySecondsOfCSharp.Lists.Lists.IndexOfAll(numbers, 4));
+        }
     }
 }
