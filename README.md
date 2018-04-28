@@ -30,6 +30,7 @@
 * [`FindLast`](#findlast)
 * [`FindLastIndex`](#findlastindex)
 * [`Flatten`](#flatten)
+* [`ForEachRight`](#foreachright)
 
 </details>
 
@@ -622,6 +623,34 @@ var list = new List<object>
 };
 
 Flatten(list, 2); // { 1, 2, 3, { 4, 5 }, 6, 7, 8 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### ForEachRight
+Executes a provided function once for each list element, starting from the list's last element.
+
+Use `Enumerable.Range(Int32, Int32)` to create an `int` sequence, `Enumerable.Reverse(IEnumerable<TSource>)` to reverse it and `List<T>.ForEach(Action<T>)` to iterate over the list.
+
+```cs
+public static void ForEachRight<T>(List<T> list, Action<T> action)
+{
+    Enumerable.Range(0, list.Count)
+        .Reverse()
+        .ToList()
+        .ForEach(i => action(list[i]));
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3, 4 };
+
+ForEachRight(numbers, x => Console.WriteLine(x)); // 4, 3, 2, 1
 ```
 
 </details>
