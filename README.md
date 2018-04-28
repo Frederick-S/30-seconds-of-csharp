@@ -32,6 +32,7 @@
 * [`Flatten`](#flatten)
 * [`ForEachRight`](#foreachright)
 * [`GroupBy`](#groupby)
+* [`Head`](#head)
 
 </details>
 
@@ -678,6 +679,31 @@ public static Dictionary<TKey, List<T>> GroupBy<T, TKey>(List<T> list, Func<T, T
 var numbers = new List<double> { 6.1, 4.2, 6.3 };
 
 GroupBy(numbers, Math.Floor); // { 4: { 4.2 }, 6: { 6.1, 6.3 } }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Head
+Returns the head of a list.
+
+Use `list[0]` to return the first element of the passed list.
+
+```cs
+public static T Head<T>(List<T> list)
+{
+    return list[0];
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 1, 2, 3 };
+
+Head(numbers); // 1
 ```
 
 </details>
