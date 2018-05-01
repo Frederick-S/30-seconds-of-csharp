@@ -5,10 +5,10 @@ namespace ThirtySecondsOfCSharp.Lists
 {
     public partial class Lists
     {
-        public static List<List<T>> Initialize2DArray<T>(int columns, int rows, T value)
+        public static List<List<T>> Initialize2DArray<T>(int width, int height, T value)
         {
-            return Enumerable.Range(1, rows)
-                .Select(i => Enumerable.Range(1, columns).Select(j => value).ToList())
+            return Enumerable.Range(1, height)
+                .Select(i => Enumerable.Range(1, width).Select(j => value).ToList())
                 .ToList();
         }
     }
