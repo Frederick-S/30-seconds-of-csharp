@@ -35,6 +35,7 @@
 * [`Head`](#head)
 * [`IndexOfAll`](#indexofall)
 * [`Initial`](#initial)
+* [`Initialize2DArray`](#initialize2darray)
 
 </details>
 
@@ -758,6 +759,31 @@ public static List<T> Initial<T>(List<T> list)
 var numbers = new List<int> { 1, 2, 3 };
 
 Initial(numbers); // { 1, 2 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Initialize2DArray
+Initializes a 2D list of given width and height and value.
+
+Use `Enumerable.Select<TSource, TResult>(IEnumerable<TSource>, Func<TSource, TResult>)` to generate `height` rows where each is a new list of size `width` initialize with value.
+
+```cs
+public static List<List<T>> Initialize2DArray<T>(int width, int height, T value)
+{
+    return Enumerable.Range(1, height)
+        .Select(i => Enumerable.Range(1, width).Select(j => value).ToList())
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+Initialize2DArray(2, 2, 0); // { { 0, 0 }, { 0, 0 } }
 ```
 
 </details>
