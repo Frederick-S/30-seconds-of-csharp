@@ -36,6 +36,7 @@
 * [`IndexOfAll`](#indexofall)
 * [`Initial`](#initial)
 * [`Initialize2DArray`](#initialize2darray)
+* [`InitializeArrayWithRange`](#initializearraywithrange)
 
 </details>
 
@@ -784,6 +785,31 @@ public static List<List<T>> Initialize2DArray<T>(int width, int height, T value)
 
 ```cs
 Initialize2DArray(2, 2, 0); // { { 0, 0 }, { 0, 0 } }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### InitializeArrayWithRange
+Initializes a list containing the numbers in the specified range where `start` and `end` are inclusive with their common difference `step`.
+
+Use `Enumerable.Range(Int32, Int32)` to create a list of the desired length(the amounts of elements is equal to `(end - start) / step` or `(end + 1 - start) / step` for inclusive end), `Enumerable.Select<TSource, TResult>(IEnumerable<TSource>, Func<TSource, TResult>)` to fill with the desired values in a range. You can omit `start` to use a default value of `0`. You can omit `step` to use a default value of `1`.
+
+```cs
+public static List<int> InitializeArrayWithRange(int end, int start = 0, int step = 1)
+{
+    return Enumerable.Range(0, (int)Math.Ceiling((end + 1.0 - start) / step))
+        .Select(i => (i * step) + start)
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+InitializeArrayWithRange(5); // { 0, 1, 2, 3, 4, 5 }
 ```
 
 </details>
