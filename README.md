@@ -38,6 +38,7 @@
 * [`Initialize2DArray`](#initialize2darray)
 * [`InitializeArrayWithRange`](#initializearraywithrange)
 * [`InitializeArrayWithRangeRight`](#initializearraywithrangeright)
+* [`InitializeArrayWithValues`](#initializearraywithvalues)
 
 </details>
 
@@ -838,6 +839,31 @@ public static List<int> InitializeArrayWithRangeRight(int end, int start = 0, in
 
 ```cs
 InitializeArrayWithRangeRight(5); // { 5, 4, 3, 2, 1, 0 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### InitializeArrayWithValues
+Initializes and fills a list with the specified values.
+
+Use `Enumerable.Range(Int32, Int32)` to create a list of the desired length, `Enumerable.Select<TSource, TResult>(IEnumerable<TSource>, Func<TSource, TResult>)` to fill it with the desired values.
+
+```cs
+public static List<T> InitializeArrayWithValues<T>(int n, T value)
+{
+    return Enumerable.Range(0, n)
+        .Select(i => value)
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+InitializeArrayWithValues(5, 2); // { 2, 2, 2, 2, 2 }
 ```
 
 </details>
