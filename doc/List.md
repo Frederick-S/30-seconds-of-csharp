@@ -199,7 +199,8 @@ Use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` to
 public static List<T> Compact<T>(List<T> list)
     where T : class
 {
-    return list.Where(x => x != null).ToList();
+    return list.Where(x => x != null)
+        .ToList();
 }
 ```
 
@@ -313,7 +314,8 @@ public static List<T> Difference<T>(List<T> a, List<T> b)
 {
     var hashSet = new HashSet<T>(b);
 
-    return a.Where(x => !hashSet.Contains(x)).ToList();
+    return a.Where(x => !hashSet.Contains(x))
+        .ToList();
 }
 ```
 
@@ -341,7 +343,8 @@ public static List<T> DifferenceBy<T>(List<T> a, List<T> b, Func<T, T> selector)
 {
     var hashSet = new HashSet<T>(b.Select(selector));
 
-    return a.Where(x => !hashSet.Contains(selector(x))).ToList();
+    return a.Where(x => !hashSet.Contains(selector(x)))
+        .ToList();
 }
 ```
 
@@ -367,7 +370,8 @@ Use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` an
 ```cs
 public static List<T> DifferenceWith<T>(List<T> a, List<T> b, Func<T, T, bool> comparator)
 {
-    return a.Where(x => b.FindIndex(y => comparator(x, y)) == -1).ToList();
+    return a.Where(x => b.FindIndex(y => comparator(x, y)) == -1)
+        .ToList();
 }
 ```
 
