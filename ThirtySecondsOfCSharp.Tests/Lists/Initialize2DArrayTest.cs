@@ -6,7 +6,7 @@ namespace ThirtySecondsOfCSharp.Tests.Lists
     public class Initialize2DArrayTest
     {
         [Fact]
-        public void ShouldGenerate2DArray()
+        public void ShouldCreate2DList()
         {
             var expectedList = new List<List<int>>
             {

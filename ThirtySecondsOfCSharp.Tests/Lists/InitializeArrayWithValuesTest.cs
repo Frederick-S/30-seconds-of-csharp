@@ -6,7 +6,7 @@ namespace ThirtySecondsOfCSharp.Tests.Lists
     public class InitializeArrayWithValuesTest
     {
         [Fact]
-        public void ShouldCreateArrayWithFiveTwos()
+        public void ShouldCreateListWithFiveTwos()
         {
             var expectedList = new List<int> { 2, 2, 2, 2, 2 };
 
