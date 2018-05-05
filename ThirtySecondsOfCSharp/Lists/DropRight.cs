@@ -7,7 +7,8 @@ namespace ThirtySecondsOfCSharp.Lists
     {
         public static List<T> DropRight<T>(List<T> list, int n)
         {
-            return list.Take(list.Count - n).ToList();
+            return list.Take(list.Count - n)
+                .ToList();
         }
     }
 }

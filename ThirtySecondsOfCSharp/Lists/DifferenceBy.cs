@@ -10,7 +10,8 @@ namespace ThirtySecondsOfCSharp.Lists
         {
             var hashSet = new HashSet<T>(b.Select(selector));
 
-            return a.FindAll(x => !hashSet.Contains(selector(x)));
+            return a.Where(x => !hashSet.Contains(selector(x)))
+                .ToList();
         }
     }
 }

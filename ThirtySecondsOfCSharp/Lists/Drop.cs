@@ -7,7 +7,8 @@ namespace ThirtySecondsOfCSharp.Lists
     {
         public static List<T> Drop<T>(List<T> list, int n)
         {
-            return list.Skip(n).ToList();
+            return list.Skip(n)
+                .ToList();
         }
     }
 }

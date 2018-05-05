@@ -8,7 +8,8 @@ namespace ThirtySecondsOfCSharp.Lists
         public static List<T> Compact<T>(List<T> list)
             where T : class
         {
-            return list.FindAll(x => x != null).ToList();
+            return list.Where(x => x != null)
+                .ToList();
         }
     }
 }

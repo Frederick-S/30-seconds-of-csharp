@@ -7,7 +7,7 @@ namespace ThirtySecondsOfCSharp.Lists
     {
         public static List<T> FilterNonUnique<T>(List<T> list)
         {
-            return list.FindAll(x => list.IndexOf(x) == list.LastIndexOf(x))
+            return list.Where(x => list.IndexOf(x) == list.LastIndexOf(x))
                 .ToList();
         }
     }
