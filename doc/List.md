@@ -36,6 +36,7 @@
 * [`InitializeArrayWithRangeRight`](#initializearraywithrangeright)
 * [`InitializeArrayWithValues`](#initializearraywithvalues)
 * [`InitializeNDArray`](#initializendarray)
+* [`Intersection`](#intersection)
 
 </details>
 
@@ -889,6 +890,35 @@ public static object InitializeNDArray(object value, params int[] rows)
 
 ```cs
 InitializeNDArray(5, 2, 2, 2); // { { { 5, 5 }, { 5, 5} }, { { 5, 5 }, {5, 5 } } }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Intersection
+Returns a list of elements that exist in both lists.
+
+Create a `HashSet` from `b`, then use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` on `a` to only keep values contained in `b`.
+
+```cs
+public static List<T> Intersection<T>(List<T> a, List<T> b)
+{
+    var hashSet = new HashSet<T>(b);
+
+    return a.Where(x => hashSet.Contains(x))
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var a = new List<int> { 1, 2, 3 };
+var b = new List<int> { 4, 3, 2 };
+            
+Intersection(a, b); // { 2, 3 }
 ```
 
 </details>
