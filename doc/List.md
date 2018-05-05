@@ -397,7 +397,8 @@ Use `Enumerable.Skip(IEnumerable<TSource>, Int32)` to remove the specified numbe
 ```cs
 public static List<T> Drop<T>(List<T> list, int n)
 {
-    return list.Skip(n).ToList();
+    return list.Skip(n)
+        .ToList();
 }
 ```
 
@@ -422,7 +423,8 @@ Use `Enumerable.Take(IEnumerable<TSource>, Int32)`to remove the specified number
 ```cs
 public static List<T> DropRight<T>(List<T> list, int n)
 {
-    return list.Take(list.Count - n).ToList();
+    return list.Take(list.Count - n)
+        .ToList();
 }
 ```
 
