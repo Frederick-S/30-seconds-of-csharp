@@ -193,13 +193,13 @@ Chunk(numbers, 2); // { { 1, 2 }, { 3, 4 }, { 5 } }
 ### Compact
 Removes null values from a list.
 
-Use `List<T>.FindAll(Predicate<T>)` to filter out null values.
+Use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` to filter out null values.
 
 ```cs
 public static List<T> Compact<T>(List<T> list)
     where T : class
 {
-    return list.FindAll(x => x != null).ToList();
+    return list.Where(x => x != null).ToList();
 }
 ```
 
@@ -306,14 +306,14 @@ DeepFlatten(numbers); // { 1, 2, 3, 4, 5 }
 ### Difference
 Returns the difference between two lists.
 
-Create a `HashSet<T>` from `b`, then use `List<T>.FindAll(Predicate<T>)` on `a` to only keep values not contained in `b`.
+Create a `HashSet<T>` from `b`, then use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` on `a` to only keep values not contained in `b`.
 
 ```cs
 public static List<T> Difference<T>(List<T> a, List<T> b)
 {
     var hashSet = new HashSet<T>(b);
 
-    return a.FindAll(x => !hashSet.Contains(x));
+    return a.Where(x => !hashSet.Contains(x)).ToList();
 }
 ```
 
@@ -334,14 +334,14 @@ Difference(a, b); // { 3 }
 ### DifferenceBy
 Returns the difference between two lists, after applying the provided function to each list element of both.
 
-Create a `HashSet<T>` by applying `selector` to each element in `b`, then use `List<T>.FindAll(Predicate<T>)` in combination with `selector` on `a` to only keep values not contained in the previously created `HashSet<T>`.
+Create a `HashSet<T>` by applying `selector` to each element in `b`, then use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` in combination with `selector` on `a` to only keep values not contained in the previously created `HashSet<T>`.
 
 ```cs
 public static List<T> DifferenceBy<T>(List<T> a, List<T> b, Func<T, T> selector)
 {
     var hashSet = new HashSet<T>(b.Select(selector));
 
-    return a.FindAll(x => !hashSet.Contains(selector(x)));
+    return a.Where(x => !hashSet.Contains(selector(x))).ToList();
 }
 ```
 
@@ -362,12 +362,12 @@ DifferenceBy(a, b, Math.Floor); // { 1.2 }
 ### DifferenceWith
 Filters out all values from a list for which the comparator function does not return `true`.
 
-Use `List<T>.FindAll(Predicate<T>)` and `List<T>.FindIndex(Predicate<T>)` to find the appropriate values.
+Use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` and `List<T>.FindIndex(Predicate<T>)` to find the appropriate values.
 
 ```cs
 public static List<T> DifferenceWith<T>(List<T> a, List<T> b, Func<T, T, bool> comparator)
 {
-    return a.FindAll(x => b.FindIndex(y => comparator(x, y)) == -1);
+    return a.Where(x => b.FindIndex(y => comparator(x, y)) == -1).ToList();
 }
 ```
 
@@ -519,12 +519,12 @@ EveryNth(numbers, 2); // { 2, 4, 6 }
 ### FilterNonUnique
 Filters out the non-unique values in a list.
 
-Use `List<T>.FindAll(Predicate<T>)` for a list containing only the unique values.
+Use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` for a list containing only the unique values.
 
 ```cs
 public static List<T> FilterNonUnique<T>(List<T> list)
 {
-    return list.FindAll(x => list.IndexOf(x) == list.LastIndexOf(x))
+    return list.Where(x => list.IndexOf(x) == list.LastIndexOf(x))
         .ToList();
 }
 ```
