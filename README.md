@@ -39,6 +39,7 @@
 * [`InitializeArrayWithRange`](#initializearraywithrange)
 * [`InitializeArrayWithRangeRight`](#initializearraywithrangeright)
 * [`InitializeArrayWithValues`](#initializearraywithvalues)
+* [`InitializeNDArray`](#initializendarray)
 
 </details>
 
@@ -863,6 +864,30 @@ public static List<T> InitializeArrayWithValues<T>(int n, T value)
 
 ```cs
 InitializeArrayWithValues(5, 2); // { 2, 2, 2, 2, 2 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### InitializeNDArray
+Create a n-dimensional list with given value.
+
+Use recursion. Use `Enumerable.Repeat(TResult, Int32)` to generate rows where each is a new list initialized using `InitializeNDArray`.
+
+```cs
+public static object InitializeNDArray(object value, params int[] rows)
+{
+    return rows.Length == 0 ? value : Enumerable.Repeat(InitializeNDArray(value, rows.Skip(1).ToArray()), rows[0])
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+InitializeNDArray(5, 2, 2, 2); // { { { 5, 5 }, { 5, 5} }, { { 5, 5 }, {5, 5 } } }
 ```
 
 </details>
