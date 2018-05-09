@@ -38,6 +38,7 @@
 * [`InitializeNDArray`](#initializendarray)
 * [`Intersection`](#intersection)
 * [`IntersectionBy`](#intersectionby)
+* [`IntersectionWith`](#intersectionwith)
 
 </details>
 
@@ -949,6 +950,33 @@ var a = new List<double> { 2.1, 1.2 };
 var b = new List<double> { 2.3, 3.4 };
             
 IntersectionBy(a, b, Math.Floor); // { 2.1 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### IntersectionWith
+Returns a list of elements that exist in both lists, using a provided comparator function.
+
+Use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` and `List<T>.FindIndex(Predicate<T>)` in combination with the provided comparator to determine intersecting values.
+
+```cs
+public static List<T> IntersectionWith<T>(List<T> a, List<T> b, Func<T, T, bool> comparator)
+{
+    return a.Where(x => b.FindIndex(y => comparator(x, y)) != -1)
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var a = new List<double> { 1, 1.2, 1.5, 3, 0 };
+var b = new List<double> { 1.9, 3, 0, 3.9 };
+            
+IntersectionWith(a, b, (x, y) => Math.Round(x) == Math.Round(y)); // { 1.5, 3, 0 }
 ```
 
 </details>
