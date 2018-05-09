@@ -37,6 +37,7 @@
 * [`InitializeArrayWithValues`](#initializearraywithvalues)
 * [`InitializeNDArray`](#initializendarray)
 * [`Intersection`](#intersection)
+* [`IntersectionBy`](#intersectionby)
 
 </details>
 
@@ -919,6 +920,35 @@ var a = new List<int> { 1, 2, 3 };
 var b = new List<int> { 4, 3, 2 };
             
 Intersection(a, b); // { 2, 3 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### IntersectionBy
+Returns a list of elements that exist in both lists, after applying the provided function to each list element of both.
+
+Create a `HashSet` by applying `selector` to all elements in `b`, then use `Enumerable.Where<TSource>(IEnumerable<TSource>, Func<TSource, Boolean>)` on `a` to only keep elements, which produce values contained in `b` when `selector` is applied to them.
+
+```cs
+public static List<T> IntersectionBy<T>(List<T> a, List<T> b, Func<T, T> selector)
+{
+    var hashSet = new HashSet<T>(b.Select(selector));
+
+    return a.Where(x => hashSet.Contains(selector(x)))
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var a = new List<double> { 2.1, 1.2 };
+var b = new List<double> { 2.3, 3.4 };
+            
+IntersectionBy(a, b, Math.Floor); // { 2.1 }
 ```
 
 </details>
