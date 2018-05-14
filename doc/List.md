@@ -1013,6 +1013,8 @@ public static int IsSorted<T>(List<T> list)
 }
 ```
 
+<details>
+<summary>Examples</summary>
 ```cs
 var list = new List<int> { 0, 1, 2, 2 };
             
@@ -1042,6 +1044,8 @@ public static string Join<T>(List<T> list, string separator = ",", string endSep
 }
 ```
 
+<details>
+<summary>Examples</summary>
 ```cs
 var list = new List<string> { "pen", "pineapple", "apple", "pen" };
             
@@ -1064,6 +1068,8 @@ public static T Last<T>(List<T> list)
 }
 ```
 
+<details>
+<summary>Examples</summary>
 ```cs
 var list = new List<int> { 1, 2, 3 };
             
