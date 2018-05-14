@@ -1067,7 +1067,7 @@ public static T Last<T>(List<T> list)
 ```cs
 var list = new List<int> { 1, 2, 3 };
             
-.Last(list); // 3
+Last(list); // 3
 ```
 
 </details>
