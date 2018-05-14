@@ -40,6 +40,7 @@
 * [`IntersectionBy`](#intersectionby)
 * [`IntersectionWith`](#intersectionwith)
 * [`IsSorted`](#issorted)
+* [`Join`](#join)
 
 </details>
 
@@ -1015,6 +1016,35 @@ public static int IsSorted<T>(List<T> list)
 var list = new List<int> { 0, 1, 2, 2 };
             
 IsSorted(list); // 1
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Join
+Joins all elements of a list into a string and returns this string. Uses a separator and an end separator.
+
+Use `string.Join<T>(String, IEnumerable<T>)` to combine elements into a string. Omit the second argument, `separator`, to use a default separator of `","`. Omit the third argument, `endSeparator`, to use the same value as `separator` by default.
+
+```cs
+public static string Join<T>(List<T> list, string separator = ",", string endSeparator = ",")
+{
+    if (separator == endSeparator)
+    {
+        return string.Join(separator, list);
+    }
+    else
+    {
+        return string.Join(separator, list.Take(list.Count - 1)) + string.Format("{0}{1}", endSeparator, list.Last());
+    }
+}
+```
+
+```cs
+var list = new List<string> { "pen", "pineapple", "apple", "pen" };
+            
+Join(list, ",", "&"); // "pen,pineapple,apple&pen"
 ```
 
 </details>
