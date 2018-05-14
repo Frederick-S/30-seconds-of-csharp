@@ -39,6 +39,7 @@
 * [`Intersection`](#intersection)
 * [`IntersectionBy`](#intersectionby)
 * [`IntersectionWith`](#intersectionwith)
+* [`IsSorted`](#issorted)
 
 </details>
 
@@ -977,6 +978,43 @@ var a = new List<double> { 1, 1.2, 1.5, 3, 0 };
 var b = new List<double> { 1.9, 3, 0, 3.9 };
             
 IntersectionWith(a, b, (x, y) => Math.Round(x) == Math.Round(y)); // { 1.5, 3, 0 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### IsSorted
+Returns `1` if the list is sorted in ascending order, `-1` if it is sorted in descending order or `0` if it is not sorted.
+
+Calculate the ordering direction for the first two elements. Loop over list objects and compare them in pairs. Return `0` if the `direction` changes or the `-direction` if the last element is reached.
+
+```cs
+public static int IsSorted<T>(List<T> list)
+    where T : IComparable
+{
+    Debug.Assert(list.Count > 1, "The list should contain at least two elements");
+
+    var direction = list[0].CompareTo(list[1]);
+
+    for (var i = 1; i < list.Count - 1; i++)
+    {
+        var result = list[i].CompareTo(list[i + 1]);
+
+        if (result != 0 && result != direction)
+        {
+            return 0;
+        }
+    }
+
+    return -direction;
+}
+```
+
+```cs
+var list = new List<int> { 0, 1, 2, 2 };
+            
+IsSorted(list); // 1
 ```
 
 </details>
