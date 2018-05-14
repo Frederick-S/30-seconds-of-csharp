@@ -41,6 +41,7 @@
 * [`IntersectionWith`](#intersectionwith)
 * [`IsSorted`](#issorted)
 * [`Join`](#join)
+* [`Last`](#last)
 
 </details>
 
@@ -1045,6 +1046,28 @@ public static string Join<T>(List<T> list, string separator = ",", string endSep
 var list = new List<string> { "pen", "pineapple", "apple", "pen" };
             
 Join(list, ",", "&"); // "pen,pineapple,apple&pen"
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Last
+Returns the last element in a list.
+
+Use `Enumerable.Last<TSource>(IEnumerable<TSource>)` to return the last element of the given list.
+
+```cs
+public static T Last<T>(List<T> list)
+{
+    return list.Last();
+}
+```
+
+```cs
+var list = new List<int> { 1, 2, 3 };
+            
+.Last(list); // 3
 ```
 
 </details>
