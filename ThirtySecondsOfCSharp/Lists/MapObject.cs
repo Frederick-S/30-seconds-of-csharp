@@ -6,9 +6,9 @@ namespace ThirtySecondsOfCSharp.Lists
 {
     public partial class Lists
     {
-        public static Dictionary<TKey, TValue> MapObject<TKey, TValue>(List<TKey> list, Func<TKey, TValue> keySelector)
+        public static Dictionary<TKey, TValue> MapObject<TKey, TValue>(List<TKey> list, Func<TKey, TValue> elementSelector)
         {
-            return list.ToDictionary(x => x, x => keySelector(x));
+            return list.ToDictionary(x => x, x => elementSelector(x));
         }
     }
 }
