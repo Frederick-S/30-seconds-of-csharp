@@ -42,7 +42,7 @@
 * [`IsSorted`](#issorted)
 * [`Join`](#join)
 * [`Last`](#last)
-* [`LongestItem`](#LongestItem)
+* [`LongestItem`](#longestItem)
 
 </details>
 
