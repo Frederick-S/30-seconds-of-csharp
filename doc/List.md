@@ -1122,9 +1122,9 @@ Maps the values of a list to a dictionary using a function, where the key-value 
 Use `Enumerable.ToDictionary<TSource, TKey, TElement>(IEnumerable<TSource>, Func<TSource, TKey>, Func<TSource, TElement>)`.
 
 ```cs
-public static Dictionary<TKey, TValue> MapObject<TKey, TValue>(List<TKey> list, Func<TKey, TValue> keySelector)
+public static Dictionary<TKey, TValue> MapObject<TKey, TValue>(List<TKey> list, Func<TKey, TValue> elementSelector)
 {
-    return list.ToDictionary(x => x, x => keySelector(x));
+    return list.ToDictionary(x => x, x => elementSelector(x));
 }
 ```
 
