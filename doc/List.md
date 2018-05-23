@@ -42,6 +42,7 @@
 * [`IsSorted`](#issorted)
 * [`Join`](#join)
 * [`Last`](#last)
+* [`LongestItem`](#LongestItem)
 
 </details>
 
@@ -1077,6 +1078,37 @@ public static T Last<T>(List<T> list)
 var list = new List<int> { 1, 2, 3 };
             
 Last(list); // 3
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### LongestItem
+Takes any number of iterable objects and returns the longest one.
+
+Use `Enumerable.OrderBy<TSource, TKey>(IEnumerable<TSource>, Func<TSource, TKey>)` to sort all arguments by `Count`, return the last (longest) one.
+
+```cs
+public static List<T> LongestItem<T>(params List<T>[] lists)
+{
+    return lists.OrderBy(x => x.Count)
+        .Last();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var lists = new List<int>[]
+{
+    new List<int> { 1, 2, 3 },
+    new List<int> { 1, 2 },
+    new List<int> { 1, 2, 3, 4, 5 },
+};
+            
+LongestItem(lists); // { 1, 2, 3, 4, 5 }
 ```
 
 </details>
