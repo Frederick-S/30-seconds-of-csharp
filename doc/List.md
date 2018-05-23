@@ -43,6 +43,7 @@
 * [`Join`](#join)
 * [`Last`](#last)
 * [`LongestItem`](#longestitem)
+* [`MapObject`](#mapobject)
 
 </details>
 
@@ -1109,6 +1110,31 @@ var lists = new List<int>[]
 };
             
 LongestItem(lists); // { 1, 2, 3, 4, 5 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### MapObject
+Maps the values of a list to a dictionary using a function, where the key-value pairs consist of the original value as the key and the mapped value.
+
+Use `Enumerable.ToDictionary<TSource, TKey, TElement>(IEnumerable<TSource>, Func<TSource, TKey>, Func<TSource, TElement>)`.
+
+```cs
+public static Dictionary<TKey, TValue> MapObject<TKey, TValue>(List<TKey> list, Func<TKey, TValue> keySelector)
+{
+    return list.ToDictionary(x => x, x => keySelector(x));
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var list = new List<int> { 1, 2, 3 };
+           
+MapObject(list, x => x * x); // { 1: 1, 2: 4, 3: 9 }
 ```
 
 </details>
