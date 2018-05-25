@@ -45,6 +45,7 @@
 * [`LongestItem`](#longestitem)
 * [`MapObject`](#mapobject)
 * [`MaxN`](#maxn)
+* [`MinN`](#minn)
 
 </details>
 
@@ -1164,6 +1165,34 @@ public static List<T> MaxN<T>(List<T> list, int n = 1)
 var list = new List<int> { 1, 2, 3 };
            
 MaxN(list); // { 3 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### MinN
+Returns the `n` minimum elements from the provided list. If `n` is greater than or equal to the provided list's length, then return the original list (sorted in ascending order).
+
+Use `Enumerable.OrderBy<TSource, TKey>(IEnumerable<TSource>, Func<TSource, TKey>)` combined with the `Enumerable.Select<TSource, TResult>(IEnumerable<TSource>, Func<TSource, TResult>)` to create a shallow clone of the list and sort it in ascending order. Use `Enumerable.Take(IEnumerable<TSource>, Int32)` to get the specified number of elements. Omit the second argument, `n`, to get a one-element list.
+
+```cs
+public static List<T> MinN<T>(List<T> list, int n = 1)
+{
+    return list.Select(x => x)
+        .OrderBy(x => x)
+        .Take(n)
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var list = new List<int> { 1, 2, 3 };
+           
+MinN(list); // { 1 }
 ```
 
 </details>
