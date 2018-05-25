@@ -44,6 +44,7 @@
 * [`Last`](#last)
 * [`LongestItem`](#longestitem)
 * [`MapObject`](#mapobject)
+* [`MaxN`](#maxn)
 
 </details>
 
@@ -1135,6 +1136,34 @@ public static Dictionary<TKey, TValue> MapObject<TKey, TValue>(List<TKey> list, 
 var list = new List<int> { 1, 2, 3 };
            
 MapObject(list, x => x * x); // { 1: 1, 2: 4, 3: 9 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### MaxN
+Returns the `n` maximum elements from the provided list. If `n` is greater than or equal to the provided list's length, then return the original list (sorted in descending order).
+
+Use `Enumerable.OrderByDescending<TSource, TKey>(IEnumerable<TSource>, Func<TSource, TKey>)` combined with the `Enumerable.Select<TSource, TResult>(IEnumerable<TSource>, Func<TSource, TResult>)` to create a shallow clone of the list and sort it in descending order. Use `Enumerable.Take(IEnumerable<TSource>, Int32)` to get the specified number of elements. Omit the second argument, `n`, to get a one-element list.
+
+```cs
+public static List<T> MaxN<T>(List<T> list, int n = 1)
+{
+    return list.Select(x => x)
+        .OrderByDescending(x => x)
+        .Take(n)
+        .ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var list = new List<int> { 1, 2, 3 };
+           
+MaxN(list); // { 3 }
 ```
 
 </details>
