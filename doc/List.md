@@ -46,6 +46,7 @@
 * [`MapObject`](#mapobject)
 * [`MaxN`](#maxn)
 * [`MinN`](#minn)
+* [`None`](#none)
 
 </details>
 
@@ -1193,6 +1194,31 @@ public static List<T> MinN<T>(List<T> list, int n = 1)
 var list = new List<int> { 1, 2, 3 };
            
 MinN(list); // { 1 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### None
+Returns `true` if the provided predicate function returns `false` for all elements in a list, `false` otherwise.
+
+Use `Enumerable.All(IEnumerable<TSource>, Func<TSource, Boolean>)` to test if any elements in the list return `false` based on `predicate`.
+
+```cs
+public static bool None<T>(List<T> list, Predicate<T> predicate)
+{
+    return list.All(x => !predicate(x));
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var list = new List<int> { 0, 1, 3, 0 };
+           
+None(list, x => x == 2); // true
 ```
 
 </details>
