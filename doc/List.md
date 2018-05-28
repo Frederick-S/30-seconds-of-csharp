@@ -47,6 +47,7 @@
 * [`MaxN`](#maxn)
 * [`MinN`](#minn)
 * [`None`](#none)
+* [`NthElement`](#nthelement)
 
 </details>
 
@@ -1219,6 +1220,29 @@ public static bool None<T>(List<T> list, Predicate<T> predicate)
 var list = new List<int> { 0, 1, 3, 0 };
            
 None(list, x => x == 2); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### NthElement
+Returns the nth element of a list.
+
+```cs
+public static T NthElement<T>(List<T> list, int n)
+{
+    return n >= 0 ? list[n] : list[list.Count + n];
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var list = new List<char> { 'a', 'b', 'c' };
+           
+NthElement(list, 1); // 'b'
 ```
 
 </details>
