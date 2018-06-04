@@ -5,18 +5,18 @@ namespace ThirtySecondsOfCSharp.Lists
 {
     public partial class Lists
     {
-        public static List<T> Offset<T>(List<T> list, int n)
+        public static List<T> Offset<T>(List<T> list, int offset)
         {
-            if (n >= 0)
+            if (offset >= 0)
             {
-                return list.TakeLast(list.Count - n)
-                    .Concat(list.Take(n))
+                return list.TakeLast(list.Count - offset)
+                    .Concat(list.Take(offset))
                     .ToList();
             }
             else
             {
-                return list.TakeLast(-n)
-                    .Concat(list.Take(list.Count + n))
+                return list.TakeLast(-offset)
+                    .Concat(list.Take(list.Count + offset))
                     .ToList();
             }
         }
