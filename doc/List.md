@@ -48,6 +48,7 @@
 * [`MinN`](#minn)
 * [`None`](#none)
 * [`NthElement`](#nthelement)
+* [`Offset`](#offset)
 
 </details>
 
@@ -1243,6 +1244,42 @@ public static T NthElement<T>(List<T> list, int n)
 var list = new List<char> { 'a', 'b', 'c' };
            
 NthElement(list, 1); // 'b'
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Offset
+Moves the specified amount of elements to the end of the list.
+
+Use `Enumerable.TakeLast(IEnumerable<TSource>, Int32)` and `Enumerable.Take(IEnumerable<TSource>, Int32)` to get the elements after the specified index and the elements before that. Use the `Enumerable.Concat(IEnumerable<TSource>, IEnumerable<TSource>)` to combine the two into one list. If offset is negative, the elements will be moved from end to start.
+
+```cs
+public static List<T> Offset<T>(List<T> list, int n)
+{
+    if (n >= 0)
+    {
+        return list.TakeLast(list.Count - n)
+            .Concat(list.Take(n))
+            .ToList();
+    }
+    else
+    {
+        return list.TakeLast(-n)
+            .Concat(list.Take(list.Count + n))
+            .ToList();
+    }
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var list = new List<int> { 1, 2, 3, 4, 5 };
+           
+Offset(list, 2); // { 3, 4, 5, 1, 2 }
 ```
 
 </details>
