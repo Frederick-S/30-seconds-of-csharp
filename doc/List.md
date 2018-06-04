@@ -49,6 +49,7 @@
 * [`None`](#none)
 * [`NthElement`](#nthelement)
 * [`Offset`](#offset)
+* [`Partition`](#partition)
 
 </details>
 
@@ -1280,6 +1281,38 @@ public static List<T> Offset<T>(List<T> list, int offset)
 var list = new List<int> { 1, 2, 3, 4, 5 };
            
 Offset(list, 2); // { 3, 4, 5, 1, 2 }
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### Partition
+Groups the elements into two lists, depending on the provided function's truthiness for each element.
+
+Use `Enumerable.Aggregate<TSource, TAccumulate>(IEnumerable<TSource>, TAccumulate, Func<TAccumulate, TSource, TAccumulate>)` to create a list of two lists. Use `List<T>.Add(T)` to add elements for which `predicate` returns true to the first list and elements for which `predicate` returns false to the second one.
+
+```cs
+public static List<List<T>> Partition<T>(List<T> list, Predicate<T> predicate)
+{
+    return list.Aggregate(new List<List<T>> { new List<T>(), new List<T>() }, (accumulator, x) =>
+    {
+        var index = predicate(x) ? 0 : 1;
+
+        accumulator[index].Add(x);
+
+        return accumulator;
+    }).ToList();
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var list = new List<int> { 1, 2, 3, 4, 5, 6 };
+           
+Partition(list, x => x % 2 == 0); // { { 2, 4, 6 }, { 1, 3, 5 } }
 ```
 
 </details>
