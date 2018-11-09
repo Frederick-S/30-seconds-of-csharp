@@ -97,7 +97,7 @@ public static bool AllEqual<T>(List<T> list)
 ```cs
 var numbers = new List<int> { 2, 2, 2, 2, 2 };
 
-Assert.True(ThirtySecondsOfCSharp.Lists.Lists.AllEqual(numbers)); // true
+AllEqual(numbers); // true
 ```
 
 </details>
