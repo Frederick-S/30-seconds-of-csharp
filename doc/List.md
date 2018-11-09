@@ -6,6 +6,7 @@
 <summary>View contents</summary>
 
 * [`All`](#all)
+* [`AllEqual`](#allequal)
 * [`Any`](#any)
 * [`Bifurcate`](#bifurcate)
 * [`BifurcateBy`](#bifurcateby)
@@ -72,6 +73,31 @@ public static bool All<T>(List<T> list, Predicate<T> predict)
 var numbers = new List<int> { 2, 4, 6, 8, 10 };
 
 All(numbers, x => x % 2 == 0); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### AllEqual
+Check if all elements in a list are equal.
+
+Create a new `HashSet<T>` and check if its size is less than or equal to 1.
+
+```cs
+public static bool AllEqual<T>(List<T> list)
+{
+    return new HashSet<T>(list).Count <= 1;
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var numbers = new List<int> { 2, 2, 2, 2, 2 };
+
+Assert.True(ThirtySecondsOfCSharp.Lists.Lists.AllEqual(numbers)); // true
 ```
 
 </details>
