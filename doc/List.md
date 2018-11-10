@@ -82,7 +82,7 @@ All(numbers, x => x % 2 == 0); // true
 ### AllEqual
 Check if all elements in a list are equal.
 
-Create a new `HashSet<T>` and check if its size is less than or equal to 1.
+Create a new `HashSet<T>` with the list as argument and check if its size is less than or equal to 1.
 
 ```cs
 public static bool AllEqual<T>(List<T> list)
