@@ -8,6 +8,7 @@
 * [`All`](#all)
 * [`AllEqual`](#allequal)
 * [`Any`](#any)
+* [`ArrayToCSV`](#arraytocsv)
 * [`Bifurcate`](#bifurcate)
 * [`BifurcateBy`](#bifurcateby)
 * [`Chunk`](#chunk)
@@ -123,6 +124,35 @@ public static bool Any<T>(List<T> list, Predicate<T> predicate)
 var numbers = new List<int> { 1, 2, 30 };
 
 Any(numbers, x => x > 10); // true
+```
+
+</details>
+
+<br>[⬆ Back to top](#table-of-contents)
+
+### ArrayToCSV
+Converts a 2D list to a comma-separated values (CSV) string.
+
+Use `Enumerable.Select<TSource, TResult>(IEnumerable<TSource>, Func<TSource, TResult>)` and `String.Join<T>(delimiter, IEnumerable<T>)` to combine individual 1D lists (rows) into strings. Use `String.Join<T>("\n", IEnumerable<T>)` to combine all rows into a CSV string, separating each row with a newline. Omit the second argument, delimiter, to use a default delimiter of `,`.
+
+```cs
+public static string ArrayToCSV<T>(List<List<T>> list, string delimiter = ",")
+{
+    return string.Join("\n", list.Select(x => string.Join(delimiter, x.Select(y => $"\"{y}\""))));
+}
+```
+
+<details>
+<summary>Examples</summary>
+
+```cs
+var list = new List<List<string>>
+{
+    new List<string> { "a", "b" },
+    new List<string> { "c", "d" },
+};
+
+ArrayToCSV(list); // "a","b"\n"c","d"
 ```
 
 </details>
