@@ -13,7 +13,7 @@ namespace ThirtySecondsOfCSharp.Lists
             }
             else
             {
-                return string.Join(separator, list.Take(list.Count - 1)) + string.Format("{0}{1}", endSeparator, list.Last());
+                return string.Join(separator, list.Take(list.Count - 1)) + $"{endSeparator}{list.Last()}";
             }
         }
     }
