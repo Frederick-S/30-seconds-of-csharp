@@ -133,7 +133,7 @@ Any(numbers, x => x > 10); // true
 ### ArrayToCSV
 Converts a 2D list to a comma-separated values (CSV) string.
 
-Use `Enumerable.Select<TSource, TResult>(IEnumerable<TSource>, Func<TSource, TResult>)` and `String.Join<T>(delimiter, IEnumerable<T>)` to combine individual 1D lists (rows) into strings. Use `String.Join<T>("\n", IEnumerable<T>)` to combine all rows into a CSV string, separating each row with a newline. Omit the second argument, delimiter, to use a default delimiter of `,`.
+Use `Enumerable.Select<TSource, TResult>(IEnumerable<TSource>, Func<TSource, TResult>)` and `String.Join<T>(delimiter, IEnumerable<T>)` to combine individual 1D lists (rows) into strings. Use `String.Join<T>("\n", IEnumerable<T>)` to combine all rows into a CSV string, separating each row with a newline. Omit the second argument, `delimiter`, to use a default delimiter of `,`.
 
 ```cs
 public static string ArrayToCSV<T>(List<List<T>> list, string delimiter = ",")
